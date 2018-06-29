@@ -1,4 +1,4 @@
-# A Tool for Downloading Directories of A Git Repository
+# A Tool for Downloading Directory from Git Repository
 
 # Install
 
