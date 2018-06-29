@@ -1,23 +1,28 @@
 {
   "name": "download-repo-dir",
   "version": "1.0.0",
-  "description": "A Tool for Downloading Directories of A Git Repository",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "description": "A Tool for Downloading Directory from Git Repository",
+  "bin": {
+    "repo": "bin/repo",
+    "repo-download": "bin/repo-download",
+    "repo-init": "bin/repo-init"
   },
+  "main": "index.js",
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/aztack/download-repo-dir.git"
   },
   "author": "aztack@163.com",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/aztack/download-repo-dir/issues"
   },
   "homepage": "https://github.com/aztack/download-repo-dir#readme",
   "dependencies": {
+    "commander": "^2.15.1",
     "download": "^7.0.0",
+    "inquirer": "^6.0.0",
     "shelljs": "^0.8.2",
     "tmp": "^0.0.33"
   }

@@ -1,0 +1,39 @@
+#!/usr/bin/env node
+
+const program = require('commander')
+const inquirer = require('inquirer')
+const $path = require('path')
+const $fs = require('fs')
+const exists = $fs.existsSync
+const packageFile = 'repo.json'
+const run = require('./run.js')
+
+/**
+ * Usage.
+ */
+program.usage('<repo> [repository]')
+
+program.on('--help', function () {
+  console.log(`  repodir init`)
+})
+
+read()
+
+/**
+ * Download repo/dir in repo.json
+ */
+function read () {
+  const cwd = process.cwd()
+  const path = $path.resolve(cwd, packageFile)
+  var json = {}
+  if (exists(path)) {
+    json = JSON.parse($fs.readFileSync(path))
+  } else {
+    console.error(`Can not find repo.json in ${cwd}`)
+    return
+  }
+  for (var repo in json) {
+    var cfg = json[repo]
+    run(repo, cfg.directory, cfg.saveTo)
+  }
+}

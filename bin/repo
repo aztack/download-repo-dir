@@ -1,0 +1,8 @@
+#!/usr/bin/env node
+
+require('commander')
+  .version(require('../package').version)
+  .usage('<command> [options]')
+  .command('download', 'download a directory in a repository')
+  .command('init', 'download repository directories in repo.json')
+  .parse(process.argv)

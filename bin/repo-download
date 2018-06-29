@@ -1,0 +1,67 @@
+#!/usr/bin/env node
+
+const program = require('commander')
+const inquirer = require('inquirer')
+const $path = require('path')
+const $fs = require('fs')
+const exists = $fs.existsSync
+const packageFile = 'repo.json'
+const run = require('./run.js')
+/**
+ * Usage.
+ */
+
+program
+  .usage('<repo> [repository]')
+
+program.on('--help', function () {
+  console.log(`  repodir download user/repo direcotry saveTo`)
+})
+
+function help () {
+  program.parse(process.argv)
+  if (program.args.length < 1) return program.help()
+}
+help()
+
+if (!program.args || program.args.length < 3) process.exit()
+
+const repo = program.args[0]
+const targetDir = program.args[1]
+const saveTo = program.args[2]
+
+if (exists(saveTo)) {
+  inquirer.prompt([{
+    type: 'confirm',
+    message: 'Target directory exists. Continue?',
+    name: 'ok'
+  }]).then(answers => {
+    if (answers.ok) {
+      run(repo, targetDir, saveTo)
+    }
+  }).catch(function (e) {
+    console.log(e.message)
+  })
+} else {
+  run(repo, targetDir, saveTo, save)
+}
+
+/**
+ * Save repo/dir/saveTo into repo.json
+ * @param  {String} repo
+ * @param  {String} dir
+ * @param  {String} saveTo
+ */
+function save (repo, dir, saveTo) {
+  const cwd = process.cwd()
+  const path = $path.resolve(cwd, packageFile)
+  var json = {}
+  if (exists(path)) {
+    json = JSON.parse($fs.readFileSync(path))
+  }
+  json[repo] = {
+    directory: dir,
+    saveTo: saveTo
+  }
+  $fs.writeFileSync(path, JSON.stringify(json, null , 2))
+}
