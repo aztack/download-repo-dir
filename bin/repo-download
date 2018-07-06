@@ -15,7 +15,16 @@ program
   .usage('<repo> [repository]')
 
 program.on('--help', function () {
-  console.log(`  repodir download user/repo direcotry saveTo`)
+  console.log(
+`  repodir download user/repo direcotry saveTo
+   example:
+    # download a directory from gitlab repository
+    repo download lingobus/generator-mpa dialog src/lib/dlg
+
+    # download the whole repository from your gitlab repository
+    export GITLAB_API_PRIVATE_TOKEN=YOUR_TOKEN
+    repo download gitlab:mygitlab.com:topGroup/subGroup/repo#tag '' assets/scripts/repo
+`)
 })
 
 function help () {
