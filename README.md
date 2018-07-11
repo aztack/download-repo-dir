@@ -3,7 +3,7 @@
 # Install
 
 ```bash
-npm i dl-repo-dir
+npm i -g dl-repo-dir
 ```
 
 # Command line usage
