@@ -4,6 +4,7 @@ const program = require('commander')
 const inquirer = require('inquirer')
 const $path = require('path')
 const $fs = require('fs')
+const $shelljs = require('shelljs')
 const exists = $fs.existsSync
 const packageFile = 'repo.json'
 const run = require('./run.js')
@@ -46,12 +47,15 @@ if (exists(saveTo)) {
     name: 'ok'
   }]).then(answers => {
     if (answers.ok) {
-      run(repo, targetDir, saveTo)
+      run(repo, targetDir, saveTo, save)
     }
   }).catch(function (e) {
     console.log(e.message)
   })
 } else {
+  const destDir = $path.dirname(saveTo)
+  console.log(`Creating directory ${saveTo}`)
+  $shelljs.mkdir('-p', destDir)
   run(repo, targetDir, saveTo, save)
 }
 

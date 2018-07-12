@@ -1,6 +1,6 @@
 {
   "name": "dl-repo-dir",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A Tool for Downloading Directory from Git Repository",
   "bin": {
     "repo": "bin/repo",
