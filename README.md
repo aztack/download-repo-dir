@@ -25,7 +25,7 @@ repo download gitlab:mygitlab.com:topgroup/subgroup/repo#v1.0.0 dir src/lib/new-
 `downloadRepoDir(repository, directory, saveTo, onProgress)`
 
 ```js
-const downloadRepoDir = require('download-repo-dir').downloadRepoDir
+const downloadRepoDir = require('dl-repo-dir').downloadRepoDir
 
 console.log(`Downloading ${repo}/${dir} into ${saveTo}...`)
 
