@@ -31,12 +31,18 @@ console.log(`Downloading ${repo}/${dir} into ${saveTo}...`)
 
 downloadRepoDir(repo, dir, saveTo, function (data) {
   process.stdout.write(`\rDownloaded ${(data.percent*100).toFixed(1)}%  `)
+}, function (srcDir, destDir) {
+  return false; // return false to stop moving srcDir to destDir
 }).then(function () {
   process.stdout.write(' Done!\n')
 }).catch(function (e) {
   console.log(e.message)
 });
 ```
+
+# Changelog
+
+- v1.0.4: add beforeMove calblack
 
 # Thanks
 
