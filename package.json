@@ -1,6 +1,6 @@
 {
   "name": "dl-repo-dir",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A Tool for Downloading Directory from Git Repository",
   "bin": {
     "repo": "bin/repo",
@@ -22,8 +22,7 @@
   "dependencies": {
     "commander": "^2.15.1",
     "download": "^7.0.0",
-    "inquirer": "^6.0.0",
-    "shelljs": "^0.8.2",
+    "shelljs": "^0.8.4",
     "tmp": "^0.0.33"
   }
 }
